@@ -8,13 +8,6 @@ font-size:24px;}
 <title>Scoreboard</title>
 </head>
 <body>
-<script>
-let file = "fetch_info.txt"
-
-fetch (file)
-.then(x => x.text())
-.then(y => document.getElementById("Qu").innerHTML = y);
-</script>
 
 <center>
 <h1 style="font-size:46px;">MineS Scoreboard</h1>
@@ -30,5 +23,13 @@ fetch (file)
 <div id="mo4">
 </div>
 </center>
+
+<script>
+let file = "fetch_info.txt"
+
+fetch (file)
+.then(x => x.text())
+.then(y => document.getElementById("Qu").innerHTML = y);
+</script>
 </body>
 </html>
