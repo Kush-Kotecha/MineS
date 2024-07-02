@@ -8,6 +8,14 @@ font-size:24px;}
 <title>Scoreboard</title>
 </head>
 <body>
+<script>
+let file = "fetch_info.txt"
+
+fetch (file)
+.then(x => x.text())
+.then(y => document.getElementById("Qu").innerHTML = y);
+</script>
+
 <center>
 <h1 style="font-size:46px;">MineS Scoreboard</h1>
 <p id="Qu">Quickest for each mode:<br>Mode 1: Name<br>Mode 2: Name 2<br>Mode 3: Name 3</p>
