@@ -4,6 +4,10 @@
 * {
 font-size:24px;}
 
+.ltng {
+overflow: scrollable;
+background-color: red;}
+
 .overlay {
   height: 100%;
   width: 0;
@@ -19,7 +23,7 @@ font-size:24px;}
 
 .overlay-content {
   position: relative;
-  top: 20%;
+  top: 15%;
   width: 100%;
   text-align: center;
   margin-top: 30px;
@@ -44,17 +48,39 @@ font-size:24px;}
   right: 45px;
   font-size: 60px;
 }
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
 </style>
 <head>
 <title>Scoreboard</title>
 </head>
 <body>
 
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
 <center>
 <h1 style="font-size: 46px;">MineS Scoreboard</h1>
-<p>This page holds a record of each win</p>
-<p id="Qu">Quickest for each mode:<br>Mode 1: Name<br>Mode 2: Name 2<br>Mode 3: Name 3</p>
-<p id="Scores">Empty here but displays content from winners text file</p>
+<p style="font-Size: 20px;">This page holds a record of successful times.<br>Thank you to Drew Robson for helping me to implement this feature into the game.</p>
+<br>
+<p id="Qu">Quickest times<br>Mode 1: Name<br>Mode 2: Name 2<br>Mode 3: Name 3</p>
 
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -68,32 +94,84 @@ font-size:24px;}
 	<a href="#mo7" onclick="closeNav()">Hell's Beacon</a>
   </div>
 </div>
+<br>
 <h2>Open the menu below to see the scoreboard for each mode</h2>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Yayamode</span>
+<span id="Menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
 
-<div id="mo1">
-<p>Separate by modes? Also ordered by quickest<p/>
+<div id="mo1" class="ltng">
+<br>
+<h2>Normal</h2>
+<p id="m1">No successful attempts for mode 1<p/>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<div id="mo2">
-pen
+<div id="mo2" class="ltng">
+<br>
+<h2>Haymaker</h2>
+<p id="m2">peNo successful attempts for mode 2</p>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<div id="mo3">
-apple
+<div id="mo3"class="ltng">
+<br>
+<h2>The Lightning Field</h2>
+<p id="m3">No successful attempts for mode 3</p>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<div id="mo4">
-pineapple
+<div id="mo4" class="ltng">
+<br>
+<h2>Pirate's Nightmare</h2>
+<p id="m4">No successful attempts for mode 4</p>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="mo5"class="ltng">
+<br>
+<h2>Nuclear Decay</h2>
+<p id="m5">No successful attempts for mode 5</p>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="mo6"class="ltng">
+<br>
+<h2>Symbiosis</h2>
+<p id="m6">No successful attempts for mode 6</p>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="mo7"class="ltng">
+<br>
+<h2>Hell's Beacon</h2>
+<p id="m7">No successful attempts for mode 7</p>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 </center>
 
 <script>
 let file = "fetch_info.txt"
+let plist = ["m1", "m2", "m3", "m4", "m5", "m6", "m7"]
+let st = ["Normal: ", "Haymaker: ", "The Lightning Field: ", "Pirate's Nightmare: ", "Nuclear Decay: ", "Symbiosis: ", "Hell's Beacon: "]
+let wlist = "Fastest times:<br>"
+let myText = "Loef - 0:13,.,John - 0:29,.,,...,Kush - 0:03,.,K22 - 0:09,.,Yata - 0:15,.,Bruh - 0:32,.,,...,Done - 0:02,.,Loef - 0:07,.,Yeti - 0:10,.,Yes - 0:15,.,,...,Kyus - 0:10,.,Fourht - 0:17,.,,...,,...,Damn - 0:06,.,,...,,...,"
+let tl = ""
 
-fetch (file)
-.then(x => x.text())
-.then(y => document.getElementById("Scores").innerHTML = y);
+async function forma(){
+  //let myObject = await fetch(file);
+  //let myText = await myObject.text();
+  const arr = myText.split(",...,");
+  for (let index = 0; index < (arr.length-1); ++index) {
+    const element = arr[index];
+	if (element){
+	  const arrt = element.split(",.,");
+	  //if more than 10, split element 'plist[index]' into two columns
+	  for (let indext = 0; indext < arrt.length; ++indext) {
+	     if (indext==0){wlist = wlist + "<b>" + st[index] + "</b> <i>" + arrt[indext] + "</i><br>";} //list of quickest players for each mode
+	     tl = tl + "<i>" + arrt[indext] + "</i><br>";
+	  }
+	  document.getElementById(plist[index]).innerHTML = tl;
+	}
+	else {wlist = wlist + "<b>" + st[index] + "</b> " + "--<br>"}
+	tl = "";
+  }
+  document.getElementById("Qu").innerHTML = wlist;
+}
+
+forma();
 
 function openNav() {
   document.getElementById("myNav").style.width = "100%";
@@ -101,6 +179,28 @@ function openNav() {
 
 function closeNav() {
   document.getElementById("myNav").style.width = "0%";
+}
+
+// Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 200px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  let pos = document.getElementById("Menu").style.bottom;
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  openNav();
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 </script>
 </body>
