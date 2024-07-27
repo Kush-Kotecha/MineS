@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<style>
+* {
+font-size:24px;}
+
+body{
+background-color: #f1f1f1;
+}
+
+.ltng {
+height: 99vh;
+overflow: auto;
+border: dashed 2px #cca01d;
+border-top: 0px;
+border-bottom: 0px;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #cca01d;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 5;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #cca01d;
+  color: #333;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #333;
+  color: #cca01d;
+}
+
+.blo{
+border: dashed 2px #cca01d;
+border-bottom: 0px;
+margin:0px;}
+
+.blo p{
+font-Size: 20px; 
+margin: 20px;
+margin: 2px;
+}
+
+.col{
+  column-count: 1;
+  column-gap: 30px;
+  column-rule: 2px solid #cca01d;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+</style>
+<head>
+<title>Scoreboard</title>
+</head>
+<body>
+
+<button onclick="openNav()" id="myBtn">&#9776; Menu</button>
+
+<center>
+<h1 style="font-size: 46px;">MineS Scoreboard</h1>
+<p style="font-Size: 20px;">This page holds a record of successful times.<br>Thank you to Drew Robson for helping me to implement this feature into the game.</p>
+<br>
+<span id="Menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+<br><br>
+<p id="Qu">Well done to these people for being the quickest to complete MineS:<br>Mode 1: N/A<br>Mode 2: N/A<br>Mode 3: N/A<br>Mode 4: N/A<br>Mode 5: N/A<br>Mode 6: N/A<br>Mode 7: N/A</p>
+
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a href="#mo1" onclick="closeNav()">Normal</a>
+    <a href="#mo2" onclick="closeNav()">Haymaker</a>
+    <a href="#mo3" onclick="closeNav()">The Lightning Field</a>
+    <a href="#mo4" onclick="closeNav()">Pirate's Nightmare</a>
+	<a href="#mo5" onclick="closeNav()">Nuclear Decay</a>
+	<a href="#mo6" onclick="closeNav()">Symbiosis</a>
+	<a href="#mo7" onclick="closeNav()">Hell's Beacon</a>
+  </div>
+</div>
+
+<br><br><br>
+<div id="mo1" class="blo">
+<br>
+<h2>Normal</h2>
+<p>This game mode is the normal version of MineSweeper. Diagonal mines are considered in all modes.
+Repeat guesses can be made but this will harm your performance. Play for time.</p></div>
+<div class="ltng"><p class="col" id="m1">No successful attempts for mode 1<p/>
+</div>
+<div id="mo2" class="blo">
+<br>
+<h2>Haymaker</h2>
+<p>This game mode has a mine in either each row or each column (selected at random).</p></div>
+<div class="ltng"><p class="col" id="m2">No successful attempts for mode 2</p></div>
+<div id="mo3" class="blo">
+<br>
+<h2>The Lightning Field</h2>
+<p>In this game mode, mines are added to the board as time progresses.
+You may recieve extra time if a duplicate mine is placed down</p></div>
+<div class="ltng"><p class="col" id="m3">No successful attempts for mode 3</p>
+</div>
+<div id="mo4" class="blo">
+<br>
+<h2>Pirate's Nightmare</h2>
+<p>In this game mode, the mine closest to your chosen cell will shift randomly.
+There is also a random chance that all mines will shift. Directions: Up/Down/Left/Right.
+Multiple mines may occupy a single node.
+Mines occupying visible cells will temporarily cover the number until they move.</p></div>
+<div class="ltng"><p class="col" id="m4">No successful attempts for mode 4</p>
+</div>
+<div id="mo5" class="blo">
+<br>
+<h2>Nuclear Decay</h2>
+<p>A random-sized cluster of mines will be randomly placed on the board.
+As time progresses, mines will separate from the cluster to random locations.
+Once they have separated, there is a chance that they will decay into two mines. This can only happen once per mine.
+Duplicates can also decay.</p></div>
+<div class="ltng"><p class="col" id="m5">No successful attempts for mode 5</p>
+</div>
+<div id="mo6" class="blo">
+<br>
+<h2>Symbiosis</h2>
+<p>As you play, the mines flocculate.
+The flocculate jumps around the board randomly while attracting individual mines, and varies in shape.
+When all mines have been collected, the flocculate redisperses as a random number of mines.
+Upon redispersion, each mine also wipes a visible cell.</p></div>
+<div class="ltng"><p class="col" id="m6">No successful attempts for mode 6</p>
+</div>
+<div id="mo7" class="blo">
+<br>
+<h2>Hell's Beacon</h2>
+<p>You have 2 minutes to determine where the mines are with only 5 guesses visible at a time.
+After 2 minutes, the board will invert and now cells with mines are empty and empty cells have mines.
+You must specify the now empty cells to return to the original board where the mines are in a new arrangement.
+The behaviour of the board is the same as the normal mode, however, visible cells will slowly disappear, with ones closest to the mines being hidden first.</p></div>
+<div class="ltng" style="border-bottom: dashed 2px #cca01d"><p class="col" id="m7">No successful attempts for mode 7</p>
+</div>
+</center>
+
+<script>
+let file = "fetch_info.txt"
+let plist = ["m1", "m2", "m3", "m4", "m5", "m6", "m7"]
+let st = ["Normal: ", "Haymaker: ", "The Lightning Field: ", "Pirate's Nightmare: ", "Nuclear Decay: ", "Symbiosis: ", "Hell's Beacon: "]
+let wlist = "Well done to these people for being the quickest to complete MineS:<br><br>"
+let myText = "Loef - 0:13,.,John - 0:29,.,,...,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,K33 - 0:15,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,K33 - 0:15,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,K33 - 0:15,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,K33 - 0:15,.,Yata - 0:25,.,Bruh - 0:32,.,Kust - 0:14,.,K33 - 0:15,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,K33 - 0:15,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,K33 - 0:15,.,Kush - 0:03,.,K22 - 0:09,.,Kust - 0:14,.,K33 - 0:15,.,Yata - 0:25,.,Bruh - 0:32,.,,...,Done - 0:02,.,Loef - 0:07,.,Yeti - 0:10,.,Yes - 0:15,.,,...,Kyus - 0:10,.,Fourht - 0:17,.,,...,,...,Damn - 0:06,.,,...,,...,"
+let tl = ""
+let indext = 0
+
+async function forma(){
+  //let myObject = await fetch(file);
+  //let myText = await myObject.text();
+  const arr = myText.split(",...,");
+  for (let index = 0; index < (arr.length-1); ++index) {
+    const element = arr[index]; //records for each mode
+	if (element){
+	  const arrt = element.split(",.,"); //split into each record
+	  for (indext = 0; (indext < arrt.length && indext < 200); ++indext) { //only shows top 200 scores
+	     if (indext==0){wlist = wlist + "<b>" + st[index] + "</b> <i>" + arrt[indext] + "</i><br>";} //list of quickest players for each mode
+	     tl = tl + "<i>" + arrt[indext] + "</i><br>";
+	  }
+	  //if more than 17, split element 'plist[index]' into two columns or more also scrollable
+	  if (arrt.length > 100) {document.getElementById(plist[index]).style.columnCount = 4;} //max 6 columns then scrollable
+	  else if (arrt.length > 17){document.getElementById(plist[index]).style.columnCount = Math.ceil(indext/17);}
+	  document.getElementById(plist[index]).innerHTML = tl;
+	}
+	else {wlist = wlist + "<b>" + st[index] + "</b> " + "--<br>"}
+	tl = "";
+  }
+  document.getElementById("Qu").innerHTML = wlist;
+}
+
+forma();
+
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+
+// Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 200px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  let pos = document.getElementById("Menu").style.bottom;
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+</body>
+</html>
