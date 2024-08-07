@@ -92,6 +92,42 @@ background-color: #f1f1f1;}
   font-size: 60px;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80vw;
+  background-color: black;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 120%;
+  left: -90%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 .table {
     display: table;
 }
@@ -155,7 +191,12 @@ background-color: #f1f1f1;}
 <br>
 <span id="Menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
 <br><br>
-<p id="Qu">Well done to these people for being the quickest to complete MineS:<br>Mode 1: N/A<br>Mode 2: N/A<br>Mode 3: N/A<br>Mode 4: N/A<br>Mode 5: N/A<br>Mode 6: N/A<br>Mode 7: N/A</p>
+<div class="tooltip">
+<a href="MineS Installer.zip">Download and play MineS here</a>
+<span class="tooltiptext">Download and unzip the installer. Install the game; within the game folder is the application "MineS" as an executable file.</span>
+</div>
+<br><br>
+<p id="Qu">Well done to these people for being the quickest to complete MineS:<br><br><b>Normal:</b> N/A<br><b>Haymaker:</b> N/A<br><b>The Lightning Field:</b> N/A<br><b>Pirate's Nightmare:</b> N/A<br><b>Nuclear Decay:</b> N/A<br><b>Symbiosis:</b> N/A<br><b>Hell's Beacon:</b> N/A</p>
 <br><br><br>
 </div>
 </center>
