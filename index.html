@@ -193,7 +193,7 @@ background-color: #f1f1f1;}
 <span id="Menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
 <br><br>
 <div class="tooltip">
-<a href="MineS Installer.zip">Download and play MineS here</a>
+<a id="gFile" href="MineS Installer.zip">Download and play MineS here</a>
 <span class="tooltiptext">Download and unzip the installer. Install the game; within the game folder is the application "MineS" as an executable file.</span>
 </div>
 <br><br>
@@ -395,12 +395,14 @@ function inv(){
 		invb = 1;
 		document.body.style.backgroundColor = "#333";
 		document.body.style.color = "white";
+		document.getElementById("gFile").style.color = "#cca01d";
 		scrollFunction();
 	}
 	else{
 		invb = 0;
 		document.body.style.backgroundColor = "";
 		document.body.style.color = "";
+		document.getElementById("gFile").style.color = "";
 		scrollFunction();
 	}
 	closeNav();
